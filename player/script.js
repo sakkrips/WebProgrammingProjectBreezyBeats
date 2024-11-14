@@ -119,7 +119,7 @@ function displayCoverArt(coverArtUrl) {
 function displaySpotifyPlayer(playlistId) {
     document.getElementById('music-recommendation').innerHTML = `
         <iframe src="https://open.spotify.com/embed/playlist/${playlistId}?view=0" 
-                width="1000" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                width="1000" height="80" frameborder="0" allowtransparency="false" allow="encrypted-media"></iframe>
     `;
 }
 

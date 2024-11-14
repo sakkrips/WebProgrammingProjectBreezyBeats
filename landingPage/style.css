@@ -17,8 +17,12 @@ html {
 }
 
 @font-face {
+  
   font-family: catchy;
   src: url(./assets/font/catchy-mager.otf);
+}
+a{
+  color : white;
 }
 
 /*========*/
@@ -115,6 +119,7 @@ html {
 }
 
 .subtitle {
+  font-style: italic;
   font-size: 25px;
   color: #b0c4de;
   text-align: right;
