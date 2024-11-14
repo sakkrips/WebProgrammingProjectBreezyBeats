@@ -19,8 +19,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px rgba(255, 255, 255, 0.63) solid;
-  background-color: #070b11;
+  /* border-bottom: 2px rgba(255, 255, 255, 0.63) solid;
+  background-color: #070b11; */
 }
 
 .user-status {
@@ -70,7 +70,7 @@ input::placeholder {
   height: calc(100vh - 127px);
   flex-direction: column;
   justify-content: space-around;
-  background: linear-gradient(to bottom, #1b1e2e, #1a5e63);
+  
 }
 
 .music-info {
@@ -125,14 +125,14 @@ input::placeholder {
     rgba(126, 211, 33, 0.05) 25px 25px;
 }
 
-.player {
+/* .player {
   height: 120px;
   width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
+} */
+/* 
 .control-buttons {
   position: relative;
   display: flex;
@@ -185,19 +185,19 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   gap: 20px;
-}
-
+} */
+/* 
 .progress-bar {
   width: 65%;
   padding: 0;
-  margin: 0;
-}
+  margin: 0; */
+/* }
 
 .timer {
   color: white;
-}
+} */
 
-
+/* 
 .volume-container {
   position: absolute;
   left: 0;
@@ -206,9 +206,9 @@ input::placeholder {
   justify-content: start;
   margin-top: 5px;
   
-}
+} */
 
-.volume {
+/* .volume {
   color: #d6dee0;
   font-size: 20px;
 }
@@ -223,10 +223,10 @@ input::placeholder {
   width: 100px;
   margin-left: 10px;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-}
+} */
 
 
-.volume-container:hover .volume-bar {
+/* .volume-container:hover .volume-bar {
   visibility: visible; 
   opacity: 1;          
 }
@@ -244,4 +244,13 @@ input::placeholder {
 
 .volume-bar::-webkit-slider-thumb {
   cursor: pointer;
+} */
+.background-clip{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }

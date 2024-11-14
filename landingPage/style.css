@@ -80,6 +80,12 @@ html {
   border-bottom: 3px solid #0d1b2a;
   /* transform: scale(1.1); */
 }
+#join-link{
+  text-decoration: none;
+}
+#join-link:active {
+  color: white; /* Change color to white when clicked */
+}
 
 .logo {
   display: flex;

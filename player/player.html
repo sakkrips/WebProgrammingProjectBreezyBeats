@@ -11,12 +11,14 @@
     ></script>
   </head>
   <body>
+    <video autoplay loop muted playsinline class="background-clip" id="background-clip">
+    </video>
     <nav>
       <a href="index.html"><img class="logo" src="logo.png" /></a>
       <input
         type="text"
         class="search-bar"
-        placeholder="Search for a mood..."
+        placeholder="Search for a place's ,music..."
       />
       <div class="user-status">
         <div class="mood">😊</div>
@@ -27,14 +29,16 @@
     </nav>
     <section class="container">
       <div class="music-info">
-        <div class="album-cover"><img src="images.jpg" /></div>
-        <p class="song">Give me everything tonight</p>
-        <p class="artist">Pitbull</p>
+        <div id="album-cover"><div id = 'location'></div>
+        <div id = 'weather-condition'></div>
+        <div id = 'temperature'></div></div>
+      </div>
+        <!-- <p class="artist">Pitbull</p> -->
       </div>
       <div class="player">
-        <div class="control-buttons">
-          <div class="volume-container">
-          <button><i class="fa-solid fa-volume-high fa-flip-vertical volume"></i></button>
+        <!-- <div class="control-buttons"> -->
+          <div id="music-recommendation">
+          <!-- <button><i class="fa-solid fa-volume-high fa-flip-vertical volume"></i></button>
           <input type="range" min="0" max="100" value="50" class="volume-bar">
         </div>
           <button "><i class="fa-solid fa-shuffle sub-btns"></i></button>
@@ -48,14 +52,13 @@
             <i class="fa-solid fa-forward-step sub-btns"></i>
           </button>
           <button><i class="fa-solid fa-repeat sub-btns"></i></button>
-        </div>
-        <div class="progress">
+        </div> -->
+        <!-- <div class="progress">
           <span class="timer">0:00</span>
           <input type="range" min="0" max="100" value="0" class="progress-bar">
-          <span class="timer">???</span>
-
-        </div>
-      </div>
+          <span class="timer">???</span> -->
+        </div></div>
     </section>
+    <script src="script.js"></script>
   </body>
 </html>
