@@ -1,35 +1,40 @@
-const openWeatherApiKey = '68f43e86bcd3445cf7d841540723b121';
-const clientId = '851e5e26d6c5470793ccaaaec5839c05';
-const clientSecret = 'c5d15cd1ba7f478e8140e3f34a38b73e';
+const openWeatherApiKey = "68f43e86bcd3445cf7d841540723b121";
+const clientId = "851e5e26d6c5470793ccaaaec5839c05";
+const clientSecret = "c5d15cd1ba7f478e8140e3f34a38b73e";
 
 async function fetchWeather() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
-            try {
-                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${openWeatherApiKey}&units=metric`);
-                const data = await response.json();
+        try {
+          const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${openWeatherApiKey}&units=metric`
+          );
+          const data = await response.json();
 
-                const weatherCondition = data.weather[0].main;
-                // document.getElementById('weather-condition').textContent = weatherCondition;
-                // document.getElementById('temperature').textContent = data.main.temp;
-                // document.getElementById('location').textContent = data.name;
+          const weatherCondition = data.weather[0].main;
+          // document.getElementById('weather-condition').textContent = weatherCondition;
+          // document.getElementById('temperature').textContent = data.main.temp;
+          // document.getElementById('location').textContent = data.name;
 
-                // const mood = getMoodBasedOnWeather(weatherCondition);
-                // setMood(mood);
-                console.log(weatherCondition + data.main.temp + data.name);
-                setBackgroundVideo(weatherCondition);
-            } catch (error) {
-                console.error('Error fetching weather data:', error);
-            }
-        }, (error) => {
-            console.error("Error getting location: ", error);
-        });
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
+          // const mood = getMoodBasedOnWeather(weatherCondition);
+          // setMood(mood);
+          console.log(weatherCondition + data.main.temp + data.name);
+          setBackgroundVideo(weatherCondition);
+        } catch (error) {
+          console.error("Error fetching weather data:", error);
+        }
+      },
+      (error) => {
+        console.error("Error getting location: ", error);
+      }
+    );
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
 }
 
 // async function setMood(mood) {
@@ -70,7 +75,7 @@ async function fetchWeather() {
 
 //         if (playlistId) {
 //             document.getElementById('music-recommendation').innerHTML = `
-//                 <iframe src="https://open.spotify.com/embed/playlist/${playlistId}" 
+//                 <iframe src="https://open.spotify.com/embed/playlist/${playlistId}"
 //                         width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 //             `;
 //         } else {
@@ -98,33 +103,33 @@ async function fetchWeather() {
 //     }
 // }
 
-
 function setBackgroundVideo(weatherCondition) {
-    const videoElement = document.getElementById('background-clip');
-    const videoSrc = {
-        Clear: 'videos/sunny.mp4',
-        Rain: 'videos/rainy.mp4',
-        Clouds: 'videos/cloudy.mp4',
-        Snow: 'videos/snowy.mp4'
-    }[weatherCondition];
+  const videoElement = document.getElementById("background-clip");
+  const videoSrc = {
+    Clear:
+      "https://videos.pexels.com/video-files/29271025/12626141_2560_1440_25fps.mp4",
+    Rain: "https://videos.pexels.com/video-files/6065020/6065020-hd_1920_1080_24fps.mp4",
+    Clouds:
+      "https://videos.pexels.com/video-files/6185565/6185565-uhd_2560_1440_25fps.mp4",
+    Snow: "https://videos.pexels.com/video-files/14034808/14034808-hd_1080_1920_24fps.mp4",
+  }[weatherCondition];
 
-    // Update the source
-    videoElement.querySelector('source').src = videoSrc;
-    
-    // Reload the video to apply the new source
-    videoElement.load();
+  // Update the source
+  videoElement.querySelector("source").src = videoSrc;
 
-    // For debugging, log the video source being applied
-    console.log(`Video updated to: ${videoSrc}`);
+  // Reload the video to apply the new source
+  videoElement.load();
+
+  // For debugging, log the video source being applied
+  console.log(`Video updated to: ${videoSrc}`);
 }
-
 
 const text = "A music suggesting app, based on the weather!";
 let index = 0;
 
 function type() {
   const subtitleElement = document.querySelector(".subtitle");
-  
+
   if (index < text.length) {
     // Create a span for each character to apply fade-in effect
     const span = document.createElement("span");
@@ -154,6 +159,5 @@ document.querySelector(".subtitle").classList.add("subtitle-cursor");
 
 // Start the typing effect
 type();
-
 
 fetchWeather();
