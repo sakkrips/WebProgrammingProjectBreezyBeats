@@ -161,3 +161,30 @@ document.querySelector(".subtitle").classList.add("subtitle-cursor");
 type();
 
 fetchWeather();
+
+
+
+// Popup
+
+document.getElementById('openPopup').addEventListener('click', function() {
+  document.getElementById('popup').classList.add('show');
+});
+
+document.querySelector('.close-popup').addEventListener('click', function() {
+  document.getElementById('popup').classList.remove('show');
+});
+
+
+// Login / Signup button effects
+
+const container = document.getElementById('container_main');
+const registerBtn = document.getElementById('register');
+const loginBtn = document.getElementById('login');
+
+registerBtn.addEventListener('click', () => {
+    container.classList.add("active");
+});
+
+loginBtn.addEventListener('click', () => {
+    container.classList.remove("active");
+});
