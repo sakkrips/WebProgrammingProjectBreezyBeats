@@ -105,26 +105,28 @@ async function fetchWeather() {
 
 function setBackgroundVideo(weatherCondition) {
   const videoElement = document.getElementById("background-clip");
+
   const videoSrc = {
-    Clear:
-      "https://videos.pexels.com/video-files/29271025/12626141_2560_1440_25fps.mp4",
+    Clear: "https://videos.pexels.com/video-files/29271025/12626141_2560_1440_25fps.mp4",
     Rain: "https://videos.pexels.com/video-files/6065020/6065020-hd_1920_1080_24fps.mp4",
-    Clouds:
-      "https://videos.pexels.com/video-files/6185565/6185565-uhd_2560_1440_25fps.mp4",
+    Clouds: "https://videos.pexels.com/video-files/6185565/6185565-uhd_2560_1440_25fps.mp4",
     Snow: "https://videos.pexels.com/video-files/14034808/14034808-hd_1080_1920_24fps.mp4",
   }[weatherCondition];
 
-  // Update the source
-  videoElement.querySelector("source").src = videoSrc;
+  // Check if the src is different to avoid unnecessary reloads
+  if (videoElement.src !== videoSrc) {
+    videoElement.src = videoSrc;
 
-  // Reload the video to apply the new source
-  videoElement.load();
+    // Reload the video to apply the new source
+    videoElement.load();
+  }
 
-  // For debugging, log the video source being applied
+  // Log the video source for debugging
   console.log(`Video updated to: ${videoSrc}`);
 }
 
-const text = "A music suggesting app, based on the weather!";
+
+const text = "Listen to the music ,the weather whispers!";
 let index = 0;
 
 function type() {
