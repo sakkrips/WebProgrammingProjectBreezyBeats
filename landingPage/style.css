@@ -17,16 +17,14 @@ html {
 }
 
 @font-face {
-  
   font-family: catchy;
   src: url(./assets/font/catchy-mager.otf);
 }
-a{
-  color : white;
+a {
+  color: white;
 }
 
 /*========*/
-
 
 /* Container and Background */
 .container {
@@ -41,18 +39,17 @@ a{
   position: relative;
   z-index: 1;
 }
-  .background-clip{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
+.background-clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
 
 /*========*/
-
 
 /* Navbar*/
 .nav {
@@ -60,7 +57,7 @@ a{
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px 30px;
+  padding: 0px 20px;
   position: relative;
   z-index: 1;
 }
@@ -84,7 +81,7 @@ a{
   border-bottom: 3px solid #0d1b2a;
   /* transform: scale(1.1); */
 }
-#join-link{
+#join-link {
   text-decoration: none;
 }
 #join-link:active {
@@ -97,14 +94,12 @@ a{
   margin-left: 20px;
 }
 
-
 .logo img {
   height: 150px;
   width: auto;
 }
 
 /*========*/
-
 
 /* Main Text */
 .text-container {
@@ -120,10 +115,10 @@ a{
 
 .subtitle {
   font-style: italic;
-  font-size: 25px;
+  font-size: 2.2em;
   color: #b0c4de;
   text-align: right;
-  margin-right: 350px;
+  margin-right: 270px;
   background-color: #0d1b2a;
   display: inline-block;
   /* transition: 1s ease; */
@@ -136,11 +131,10 @@ background-color: white;
 
 /*========*/
 
-
 /* Footer */
 .bottom-icons {
   position: fixed;
-  bottom: 20px;
+  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -150,7 +144,6 @@ background-color: white;
   font-size: 50px;
   cursor: pointer;
   margin-left: 20px;
-  margin-bottom: 10px;
   transition: 0.5s;
 }
 
@@ -174,10 +167,9 @@ background-color: white;
 
 /*========*/
 
-
 /* POPUP */
 
-.popup{
+.popup {
   z-index: 5;
   width: 50%;
   height: 70%;
@@ -200,8 +192,8 @@ background-color: white;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.close-popup{
-  position:absolute;
+.close-popup {
+  position: absolute;
   top: 12px;
   right: 12px;
   cursor: pointer;
@@ -209,7 +201,7 @@ background-color: white;
   font-size: 30px;
 }
 
-.popup.show{
+.popup.show {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -217,9 +209,7 @@ background-color: white;
 
 /*========*/
 
-
 /*FORM*/
-
 
 .container_main {
   background-color: #9b9b9b;
@@ -414,4 +404,3 @@ background-color: white;
 .container_main.active .toggle-right {
   transform: translateX(200%);
 }
-

@@ -107,9 +107,11 @@ function setBackgroundVideo(weatherCondition) {
   const videoElement = document.getElementById("background-clip");
 
   const videoSrc = {
-    Clear: "https://videos.pexels.com/video-files/29271025/12626141_2560_1440_25fps.mp4",
+    Clear:
+      "https://videos.pexels.com/video-files/29271025/12626141_2560_1440_25fps.mp4",
     Rain: "https://videos.pexels.com/video-files/6065020/6065020-hd_1920_1080_24fps.mp4",
-    Clouds: "https://videos.pexels.com/video-files/6185565/6185565-uhd_2560_1440_25fps.mp4",
+    Clouds:
+      "https://videos.pexels.com/video-files/6185565/6185565-uhd_2560_1440_25fps.mp4",
     Snow: "https://videos.pexels.com/video-files/14034808/14034808-hd_1080_1920_24fps.mp4",
   }[weatherCondition];
 
@@ -125,8 +127,7 @@ function setBackgroundVideo(weatherCondition) {
   console.log(`Video updated to: ${videoSrc}`);
 }
 
-
-const text = "Listen to the music ,the weather whispers!";
+const text = "Listen to the music, the weather whispers!";
 let index = 0;
 
 function type() {
@@ -164,29 +165,26 @@ type();
 
 fetchWeather();
 
-
-
 // Popup
 
-document.getElementById('openPopup').addEventListener('click', function() {
-  document.getElementById('popup').classList.add('show');
+document.getElementById("openPopup").addEventListener("click", function () {
+  document.getElementById("popup").classList.add("show");
 });
 
-document.querySelector('.close-popup').addEventListener('click', function() {
-  document.getElementById('popup').classList.remove('show');
+document.querySelector(".close-popup").addEventListener("click", function () {
+  document.getElementById("popup").classList.remove("show");
 });
-
 
 // Login / Signup button effects
 
-const container = document.getElementById('container_main');
-const registerBtn = document.getElementById('register');
-const loginBtn = document.getElementById('login');
+const container = document.getElementById("container_main");
+const registerBtn = document.getElementById("register");
+const loginBtn = document.getElementById("login");
 
-registerBtn.addEventListener('click', () => {
-    container.classList.add("active");
+registerBtn.addEventListener("click", () => {
+  container.classList.add("active");
 });
 
-loginBtn.addEventListener('click', () => {
-    container.classList.remove("active");
+loginBtn.addEventListener("click", () => {
+  container.classList.remove("active");
 });
