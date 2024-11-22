@@ -165,7 +165,7 @@ type();
 
 fetchWeather();
 
-// Popup
+// Popup Login
 
 document.getElementById("openPopup").addEventListener("click", function () {
   document.getElementById("popup").classList.add("show");
@@ -188,3 +188,9 @@ registerBtn.addEventListener("click", () => {
 loginBtn.addEventListener("click", () => {
   container.classList.remove("active");
 });
+
+// Popup Info
+
+// document.querySelector(".popup-info").addEventListener("click", function(){
+
+// }

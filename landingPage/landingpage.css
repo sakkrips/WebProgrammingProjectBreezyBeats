@@ -7,8 +7,8 @@
 
 body,
 html {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #ffffff;
@@ -66,11 +66,11 @@ a {
   padding: 10px 20px;
   font-size: 25px;
   color: #ffffff;
-  background: #00000070;
+  background: #00000038;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: 0.6s;
+  transition: 0.5s;
   margin-right: 20px;
   font-family: catchy;
 }
@@ -78,9 +78,10 @@ a {
 .join-button:hover {
   /* background: #a5aeb3; */
   /* color: #000000; */
-  border-bottom: 3px solid #0d1b2a;
+  border-bottom: 4px solid #0d1b2a;
   /* transform: scale(1.1); */
 }
+
 #join-link {
   text-decoration: none;
 }
@@ -171,11 +172,11 @@ background-color: white;
 
 .popup {
   z-index: 5;
-  width: 50%;
-  height: 70%;
+  width: 55%;
+  height: 75%;
   position: fixed;
-  top: 16%;
-  left: 25%;
+  top: 12%;
+  left: 21%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -204,6 +205,7 @@ background-color: white;
 .popup.show {
   opacity: 1;
   pointer-events: auto;
+  padding: 20px 40px;
   transform: translateY(0);
 }
 
