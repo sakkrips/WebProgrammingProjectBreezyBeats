@@ -70,7 +70,7 @@ a {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.2s;
   margin-right: 20px;
   font-family: catchy;
 }
@@ -78,7 +78,7 @@ a {
 .join-button:hover {
   /* background: #a5aeb3; */
   /* color: #000000; */
-  border-bottom: 4px solid #0d1b2a;
+  border-bottom: 2cap solid #0d1b2a;
   /* transform: scale(1.1); */
 }
 
@@ -124,11 +124,6 @@ a {
   display: inline-block;
   /* transition: 1s ease; */
 }
-
-/* .subtitle:hover{
-color: #0d1b2a;
-background-color: white;
-} */
 
 /*========*/
 
@@ -361,7 +356,6 @@ background-color: white;
 .toggle {
   background-color: black;
   height: 100%;
-  /* background: linear-gradient(to right, #5c6bc0, #512da8); */
   color: #fff;
   position: relative;
   left: -100%;
