@@ -262,5 +262,3 @@ function showCustomAlert(message, callback) {
     if (callback) callback(); // Execute the callback if provided
   });
 }
-
-showCustomAlert("Test");
