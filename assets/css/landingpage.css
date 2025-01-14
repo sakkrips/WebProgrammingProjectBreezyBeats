@@ -18,7 +18,7 @@ html {
 
 @font-face {
   font-family: catchy;
-  src: url(./assets/font/catchy-mager.otf);
+  src: url(/assets/fonts/catchy-mager.otf);
 }
 a {
   color: white;
@@ -400,3 +400,98 @@ a {
 .container_main.active .toggle-right {
   transform: translateX(200%);
 }
+
+/*========*/
+
+/* Info Popup */
+
+#infoPopup .info-content {
+  text-align: center;
+  color: white;
+}
+
+#infoPopup h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+#infoPopup p {
+  font-size: 1.2em;
+}
+
+.info-content {
+  width: 1200px; /* Set the width of the window */
+  height: 600px; /* Set the height of the window */
+  padding: 20px 40px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Disable horizontal scrolling */
+  text-align: left;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  background: rgba(110, 110, 110, 0.35);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.info-content p {
+  font-size: 10px;
+  line-height: 40px;
+  margin-bottom: 50px;
+  font-weight: 350;
+  color: white;
+}
+
+.info-content li {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 350;
+  margin-left: 25px;
+  color: white;
+}
+
+.headline {
+  font-style: italic;
+  font-size: 100px;
+  margin-bottom: 40px;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  font-weight: 700;
+  font-family: catchy;
+  color: floralwhite;
+  padding-bottom: 10px;
+  border-bottom: 0.5px rgb(255, 255, 255) solid;
+}
+
+.subheads {
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-decoration: none;
+  font-style: italic;
+  text-transform: uppercase;
+  border-radius: 200px;
+  letter-spacing: 3px;
+  color: rgb(29, 29, 29);
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  font-family: catchy;
+}
+
+ul {
+  list-style: none;
+  border: 1px solid #7b7b7b;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+}
+
+.list-bulls {
+  text-decoration: underline;
+  margin: 5px 0px 10px 0px;
+  color: #c5c5c5;
+}
+
+/*========*/

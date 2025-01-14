@@ -175,6 +175,29 @@ document.querySelector(".close-popup").addEventListener("click", function () {
   document.getElementById("popup").classList.remove("show");
 });
 
+/*========*/
+
+// Popup Info
+
+document.addEventListener("DOMContentLoaded", () => {
+  const infoPopup = document.getElementById("infoPopup");
+  const openInfoPopup = document.querySelector(".info-icon a");
+  const closeInfoPopup = document.getElementById("closeInfoPopup");
+
+  // Open the Info Popup
+  openInfoPopup.addEventListener("click", (e) => {
+    e.preventDefault();
+    infoPopup.classList.add("show");
+  });
+
+  // Close the Info Popup
+  closeInfoPopup.addEventListener("click", () => {
+    infoPopup.classList.remove("show");
+  });
+});
+
+/*========*/
+
 // Login / Signup button effects
 
 const container = document.getElementById("container_main");
@@ -189,8 +212,35 @@ loginBtn.addEventListener("click", () => {
   container.classList.remove("active");
 });
 
-// Popup Info
+/*========*/
 
-// document.querySelector(".popup-info").addEventListener("click", function(){
+// Login Phase
 
-// }
+document.addEventListener("DOMContentLoaded", () => {
+  const signIn = document.getElementById("sign-in");
+
+  // Dummy user data for validation
+  const testLogin = {
+    email: "aggelos@example.com",
+    password: "123456",
+  };
+
+  // Handle Sign In Form Submission
+  signIn.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get input values
+    const email = document.getElementById("email-in").value.trim();
+    const password = document.getElementById("password-in").value;
+
+    // Validate input
+    if (email === testLogin.email && password === testLogin.password) {
+      alert("Login successful! Redirecting...");
+      window.location.href = "mood.html"; // Redirect to another page
+    } else {
+      alert("Invalid email or password. Please try again.");
+    }
+  });
+});
+
+/*========*/
