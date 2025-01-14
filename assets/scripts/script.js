@@ -235,12 +235,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validate input
     if (email === testLogin.email && password === testLogin.password) {
-      alert("Login successful! Redirecting...");
-      window.location.href = "mood.html"; // Redirect to another page
+      showCustomAlert("Login successful!", () => {
+        setTimeout(() => {
+          window.location.href = "dashboard.html"; // Redirect after a delay
+        }, 2000); // Delay for 2 seconds (2000ms)
+      });
     } else {
-      alert("Invalid email or password. Please try again.");
+      showCustomAlert("Invalid email or password. Please try again.");
     }
   });
 });
 
 /*========*/
+
+// Function to show the custom alert
+function showCustomAlert(message, callback) {
+  const customAlert = document.getElementById("customAlert");
+  const alertMessage = document.getElementById("alertMessage");
+
+  alertMessage.textContent = message; // Set the alert message
+  customAlert.style.display = "block"; // Show the alert
+
+  // Close button functionality
+  document.getElementById("closeAlert").addEventListener("click", () => {
+    customAlert.style.display = "none"; // Hide the alert
+    if (callback) callback(); // Execute the callback if provided
+  });
+}
