@@ -501,6 +501,8 @@ ul {
 
 /*========*/
 
+/* Custom Alert */
+
 .custom-alert {
   position: fixed;
   top: 50%;
@@ -508,29 +510,33 @@ ul {
   transform: translate(-50%, -50%);
   background-color: #fff;
   color: #333;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   text-align: center;
   display: none; /* Hidden by default */
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .custom-alert p {
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .custom-alert button {
   padding: 10px 20px;
-  background-color: #6200ea;
+  background-color: #000;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 17px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .custom-alert button:hover {
-  background-color: #4500b5;
+  background-color: #272727;
 }
+
+/*========*/
