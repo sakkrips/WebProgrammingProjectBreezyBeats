@@ -408,17 +408,17 @@ a {
 
 /* Info Popup */
 
-#popup-info-open .info-content {
+#infoPopup .info-content {
   text-align: center;
   color: white;
 }
 
-#popup-info-open h2 {
+#infoPopup h2 {
   font-size: 2em;
   margin-bottom: 10px;
 }
 
-#popup-info-open p {
+#infoPopup p {
   font-size: 1.2em;
 }
 

@@ -180,9 +180,9 @@ document.querySelector(".close-popup").addEventListener("click", function () {
 // Popup Info
 
 document.addEventListener("DOMContentLoaded", () => {
-  const infoPopup = document.getElementById("popup-info-open");
+  const infoPopup = document.getElementById("infoPopup");
   const openInfoPopup = document.querySelector(".info-icon a");
-  const closeInfoPopup = document.getElementById("popup-info-open");
+  const closeInfoPopup = document.getElementById("closeInfoPopup");
 
   // Open the Info Popup
   openInfoPopup.addEventListener("click", (e) => {
