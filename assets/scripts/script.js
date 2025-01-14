@@ -180,9 +180,9 @@ document.querySelector(".close-popup").addEventListener("click", function () {
 // Popup Info
 
 document.addEventListener("DOMContentLoaded", () => {
-  const infoPopup = document.getElementById("infoPopup");
+  const infoPopup = document.getElementById("popup-info-open");
   const openInfoPopup = document.querySelector(".info-icon a");
-  const closeInfoPopup = document.getElementById("closeInfoPopup");
+  const closeInfoPopup = document.getElementById("popup-info-open");
 
   // Open the Info Popup
   openInfoPopup.addEventListener("click", (e) => {
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (email === testLogin.email && password === testLogin.password) {
       showCustomAlert("Login successful!", () => {
         setTimeout(() => {
-          window.location.href = "dashboard.html"; // Redirect after a delay
+          window.location.href = "mood.html"; // Redirect after a delay
         }, 2000); // Delay for 2 seconds (2000ms)
       });
     } else {
