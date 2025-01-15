@@ -217,7 +217,28 @@ loginBtn.addEventListener("click", () => {
 // Login Phase
 
 document.addEventListener("DOMContentLoaded", () => {
-  const signIn = document.getElementById("sign-in");
+  // Function to show the custom alert
+  function showCustomAlert(message, callback) {
+    const customAlert = document.getElementById("customAlert");
+    const alertMessage = document.getElementById("alertMessage");
+    const closeAlertButton = document.getElementById("closeAlert");
+
+
+    // Set the alert message
+    alertMessage.textContent = message;
+
+    // Show the alert
+    customAlert.style.display = "block";
+
+    // Ensure the button only closes once (remove previous listeners)
+    closeAlertButton.onclick = () => {
+      customAlert.style.display = "none"; // Hide the alert
+      if (callback) callback(); // Execute the callback if provided
+    };
+  }
+
+  // Handle the Sign-In form submission
+  const signInForm = document.getElementById("sign-in");
 
   // Dummy user data for validation
   const testLogin = {
@@ -225,22 +246,29 @@ document.addEventListener("DOMContentLoaded", () => {
     password: "123456",
   };
 
-  // Handle Sign In Form Submission
-  signIn.addEventListener("submit", (e) => {
+  signInForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission
 
-    // Get input values
+    // Get user input
     const email = document.getElementById("email-in").value.trim();
     const password = document.getElementById("password-in").value;
 
-    // Validate input
+    // Validate the credentials
     if (email === testLogin.email && password === testLogin.password) {
-      alert("Login successful! Redirecting...");
-      window.location.href = "mood.html"; // Redirect to another page
+      // Show a success alert
+      showCustomAlert("Login successful!", () => {
+        // Redirect to another page after closing the alert
+        window.location.href = "mood.html";
+      });
     } else {
-      alert("Invalid email or password. Please try again.");
+      // Show a failure alert
+      showCustomAlert("Invalid email or password. Please try again.");
     }
   });
 });
 
 /*========*/
+
+
+
+
