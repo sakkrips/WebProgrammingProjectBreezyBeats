@@ -21,8 +21,7 @@ async function fetchWeather() {
             document.getElementById('weather-condition').textContent = weatherCondition;
             document.getElementById('temperature').textContent = data.main.temp;
             document.getElementById('location').textContent = data.name;
-  //*******************dWE NEED TO AKE THIS LINK TO THE MOOD PAGE
-            const mood = "calm"; 
+            const mood = sessionStorage.getItem("selectedMood"); 
             setMood(mood);
             console.log(weatherCondition + data.main.temp + data.name);
             setBackgroundVideo(weatherCondition);
@@ -164,4 +163,6 @@ function setBackgroundVideo(weatherCondition) {
     // Log the vid  eo source for debugging
     console.log(`Video updated to: ${videoSrc}`);
   }
-fetchWeather();
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchWeather();
+  });

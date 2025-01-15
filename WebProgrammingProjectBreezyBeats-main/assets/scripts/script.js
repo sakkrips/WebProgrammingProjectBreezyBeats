@@ -2,6 +2,10 @@ const openWeatherApiKey = "68f43e86bcd3445cf7d841540723b121";
 const clientId = "851e5e26d6c5470793ccaaaec5839c05";
 const clientSecret = "c5d15cd1ba7f478e8140e3f34a38b73e";
 
+
+
+
+
 async function fetchWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -243,4 +247,66 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/*========*/
+// 1. Google Login
+function handleGoogleCredentialResponse(response) {
+  const dataPayload = JSON.parse(atob(response.credential.split('.')[1]));
+  console.log("Google user data:", dataPayload);
+  alert(`Welcome, ${dataPayload.name}! Redirecting...`);
+  // window.location.href = "mood.html";
+}
+
+function initGoogleLogin() {
+  google.accounts.id.initialize({
+    client_id: "YOUR_GOOGLE_CLIENT_ID",
+    callback: handleGoogleCredentialResponse,
+  });
+  google.accounts.id.prompt();
+}
+
+// 2. Facebook Login
+window.fbAsyncInit = function () {
+  FB.init({
+    appId: "YOUR_FACEBOOK_APP_ID",
+    cookie: true,
+    xfbml: true,
+    version: "v17.0",
+  });
+};
+
+function triggerFacebookLogin() {
+  FB.login(
+    function (response) {
+      if (response.status === "connected") {
+        FB.api("/me?fields=name,email", function (user) {
+          console.log("Facebook user data:", user);
+          alert(`Welcome, ${user.name}! Redirecting...`);
+          // window.location.href = "mood.html";
+        });
+      } else {
+        console.log("User canceled or did not fully authorize.");
+      }
+    },
+    { scope: "public_profile,email" }
+  );
+}
+
+// 3. Add event listeners after DOM loads
+document.addEventListener("DOMContentLoaded", () => {
+  const googleLoginBtn = document.getElementById("googleLogin");
+  const facebookLoginBtn = document.getElementById("facebookLogin");
+
+  googleLoginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    initGoogleLogin();
+  });
+
+  facebookLoginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    triggerFacebookLogin();
+  });
+});
+
+
+
+
+

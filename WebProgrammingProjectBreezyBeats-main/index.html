@@ -73,13 +73,17 @@
               <h1>Sign In</h1>
               <span><i class="close" class="fa-solid fa-xmark"></i></span>
               <div class="social-icons">
-                <a href="#" class="icon">
+                <!-- Google Login -->
+                <a href="#" class="icon" id="googleLogin">
                   <i class="fa-brands fa-google-plus-g"></i>
                 </a>
-                <a href="#" class="icon">
+              
+                <!-- Facebook Login -->
+                <a href="#" class="icon" id="facebookLogin">
                   <i class="fa-brands fa-facebook-f"></i>
                 </a>
               </div>
+              
               <span>or use your email password</span>
               <input type="email" name="email" id="email-in" placeholder="Email" required />
               <input type="password" name="password" id="password-in" placeholder="Password" required />
@@ -157,7 +161,20 @@
         </div>
       </div>
     </div>
+    <!-- Google Identity Services -->
+<script
+  src="https://accounts.google.com/gsi/client"
+  async
+  defer
+></script>
 
+<!---- Facebook SDK -->
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/en_US/sdk.js"
+></script>
     <script src="assets/scripts/script.js"></script>
   </body>
 </html>
