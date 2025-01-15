@@ -5,11 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     moodOptions.forEach((option) => {
       option.addEventListener("click", () => {
         const selectedMood = option.getAttribute("data-mood"); // Get the mood
-<<<<<<< Updated upstream
         console.log("Mood:", selectedMood);
-=======
-        console.log("Selected Mood:", selectedMood);
->>>>>>> Stashed changes
   
         // Save the mood to sessionStorage (or pass it to the next page via query params)
         sessionStorage.setItem("selectedMood", selectedMood);
