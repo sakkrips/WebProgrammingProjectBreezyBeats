@@ -2,63 +2,48 @@ const openWeatherApiKey = "68f43e86bcd3445cf7d841540723b121";
 const clientId = "851e5e26d6c5470793ccaaaec5839c05";
 const clientSecret = "c5d15cd1ba7f478e8140e3f34a38b73e";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const selectedMood = sessionStorage.getItem("selectedMood"); // Retrieve the mood
-  if (selectedMood) {
-    console.log("Mood:", selectedMood); // Log the mood in the console
-    setMood(selectedMood); // Use the mood to set up the player
-  } else {
-    console.log("No mood selected.");
-  }
-  fetchWeather(); // Ensure weather data is fetched on page load
-});
+
 
 async function fetchWeather() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-
-        try {
-          const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${openWeatherApiKey}&units=metric`
-          );
-          const data = await response.json();
-
-          const weatherCondition = data.weather[0].main;
-          document.getElementById("weather-condition").textContent =
-            weatherCondition;
-          document.getElementById("temperature").textContent = data.main.temp;
-          document.getElementById("location").textContent = data.name;
-
-          const mood = sessionStorage.getItem("selectedMood") || "calm";
-          setMood(mood);
-          console.log(`Weather: ${weatherCondition}, Mood: ${mood}`);
-          setBackgroundVideo(weatherCondition);
-        } catch (error) {
-          console.error("Error fetching weather data:", error);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+  
+          try {
+            const response = await fetch(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${openWeatherApiKey}&units=metric`
+            );
+            const data = await response.json();
+  
+            const weatherCondition = data.weather[0].main;
+            document.getElementById('weather-condition').textContent = weatherCondition;
+            document.getElementById('temperature').textContent = data.main.temp;
+            document.getElementById('location').textContent = data.name;
+  //*******************dWE NEED TO AKE THIS LINK TO THE MOOD PAGE
+            const mood = "calm"; 
+            setMood(mood);
+            console.log(weatherCondition + data.main.temp + data.name);
+            setBackgroundVideo(weatherCondition);
+          } catch (error) {
+            console.error("Error fetching weather data:", error);
+          }
+        },
+        (error) => {
+          console.error("Error getting location: ", error);
         }
-  });
+      );
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
   }
 
-// Function to update the selected mood
-function updateMood(selectedMood) {
-  sessionStorage.setItem("selectedMood", selectedMood);
-  setMood(selectedMood);
-}
-
-// Async function to set mood with album art
+// async function to set mood with album art
 async function setMood(mood) {
-  const token = await getSpotifyToken();
-  const weatherCondition =
-    document.getElementById("weather-condition").textContent;
-  let playlistId = null;
-  if (mood && weatherCondition) {
-    playlistId = getPlaylistId(mood, weatherCondition);
+    console.log("Mood:", mood);
+    const token = await getSpotifyToken();
+    const weatherCondition = document.getElementById('weather-condition').textContent;
 
     let playlistId = null;
     if (mood && weatherCondition) {
@@ -74,37 +59,36 @@ async function setMood(mood) {
     } else {
         console.log("Weather or mood data is missing.");
     }
-  }
 }
 
 // Function to map mood and weatherCondition to playlist ID
 function getPlaylistId(mood, weatherCondition) {
-  const playlistMapping = {
-    calm: {
-      Clear: "37i9dQZF1DX2UXfvEIZvDK",
-      Rain: "1wc5GFONKFEpJLodgyM8a0",
-      Clouds: "18WMgoaQ11jS4Cq0CEBvvk",
-      Snow: "5D7svtY9K7VXoNCbH83LBl",
-    },
-    happy: {
-      Clear: "7GhawGpb43Ctkq3PRP1fOL",
-      Rain: "0jF83TW4Zv7ZyBZ50jBcOS",
-      Clouds: "3IpkBDRIIToMBuL3BxL7Tu",
-      Snow: "0o6obtchqqS04OWEG5g0SP",
-    },
-    angry: {
-      Clear: "37i9dQZF1EIgNZCaOGb0Mi",
-      Rain: "4A1nJnRyiDCdh3iMf8gzZf",
-      Clouds: "6gqbl1e15W0JfxtyWPJnVu",
-      Snow: "2RCAeT4ovN3O1yDeAWZl1b",
-    },
-    melancholy: {
-      Clear: "4ZbcfdnWOjn8FQk4mvsyb0",
-      Rain: "1aLrekwC72iuF5d5nePJkv",
-      Clouds: "2GXv4UaSiTAQPi6ohv3JaJ",
-      Snow: "7IbQ24sEbyE7E5cjbkXQB5",
-    },
-  };
+    const playlistMapping = {
+        calm: {
+            Clear: '69pkbBraIGFlJOi21CEN80',
+            Rain: '69pkbBraIGFlJOi21CEN80',
+            Clouds: '4uKswQrI9K0wjO9zKj5Zmx',
+            Snow: '0QhHK9Z1rwfA8mQB9atFgG'
+        },
+        happy: {
+            Clear: '337i9dQZF1DWW5Jdaphc81Z',
+            Rain: '5Oks9gIOQ6XKg9QOhMZgj2',
+            Clouds: '2BpLcpGa1Qc4jBd4Mjw0db',
+            Snow: '3wVdPrZNaqcDIdCPXavJgS'
+        },
+        energetic: {
+            Clear: '0jbaEzUwLTOlIOp42B5pXV',
+            Rain: '37i9dQZF1DX2pSTOxoPbx9',
+            Clouds: '6gqbl1e15W0JfxtyWPJnVu',
+            Snow: '37i9dQZF1DX0LctmTPNQ3v'
+        },
+        melancholic: {
+            Clear: '0qKWsDcph1R6DBhBrTocQO',
+            Rain: '6SdhABFA2ngvblTHHf7vV0',
+            Clouds: '1eM5AviheXztswq4jn2Rc0',
+            Snow: '37i9dQZF1DX88mTcSM3nFc'
+        }
+    };
 
     return playlistMapping[mood]?.[weatherCondition] || null;
 }
@@ -159,23 +143,54 @@ async function getSpotifyToken() {
         console.error('Error getting Spotify token:', error);
     }
 }
-
-// Function to update the background video
 function setBackgroundVideo(weatherCondition) {
-  const videoElement = document.getElementById("background-clip");
-
-  const videoSrc = {
-    Clear:
-      "https://videos.pexels.com/video-files/29271025/12626141_2560_1440_25fps.mp4",
-    Rain: "https://videos.pexels.com/video-files/6065020/6065020-hd_1920_1080_24fps.mp4",
-    Clouds:
-      "https://videos.pexels.com/video-files/6185565/6185565-uhd_2560_1440_25fps.mp4",
-    Snow: "https://videos.pexels.com/video-files/14034808/14034808-hd_1080_1920_24fps.mp4",
-  }[weatherCondition];
-
-  if (videoElement.src !== videoSrc) {
-    videoElement.src = videoSrc;
-    videoElement.load();
+    const videoElement = document.getElementById("background-clip");
+  
+    const videoSrc = {
+      Clear: "https://videos.pexels.com/video-files/29271025/12626141_2560_1440_25fps.mp4",
+      Rain: "https://videos.pexels.com/video-files/6065020/6065020-hd_1920_1080_24fps.mp4",
+      Clouds: "https://videos.pexels.com/video-files/6185565/6185565-uhd_2560_1440_25fps.mp4",
+      Snow: "https://videos.pexels.com/video-files/14034808/14034808-hd_1080_1920_24fps.mp4",
+    }[weatherCondition];
+  
+    // Check if the src is different to avoid unnecessary reloads
+    if (videoElement.src !== videoSrc) {
+      videoElement.src = videoSrc;
+  
+      // Reload the video to apply the new source
+      videoElement.load();
+    }
+  
+    // Log the video source for debugging
+    console.log(`Video updated to: ${videoSrc}`);
   }
-  console.log(`Video updated to: ${videoSrc}`);
-}
+fetchWeather();
+
+
+
+
+
+// Select the necessary elements
+const profileButton = document.querySelector('.user-status a:nth-child(2)'); // Assuming the second link is the profile button
+const popup = document.getElementById('profile-popup');
+const closePopupButton = document.getElementById('close-popup');
+
+// Function to show the popup
+profileButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent any default link behavior
+  popup.classList.remove('hidden'); // Remove the 'hidden' class to show the popup
+});
+
+// Function to close the popup
+closePopupButton.addEventListener('click', () => {
+  popup.classList.add('hidden'); // Add the 'hidden' class to hide the popup
+});
+
+// Optional: Close the popup when clicking outside of it
+window.addEventListener('click', (event) => {
+  if (event.target === popup) {
+    popup.classList.add('hidden');
+  }
+});
+
+  
