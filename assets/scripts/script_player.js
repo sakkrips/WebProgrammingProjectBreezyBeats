@@ -39,7 +39,7 @@ async function fetchWeather() {
         } catch (error) {
           console.error("Error fetching weather data:", error);
         }
-      );
+  });
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
