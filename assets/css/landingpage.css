@@ -97,6 +97,7 @@ a {
 .logo {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
 .logo img {
@@ -143,24 +144,25 @@ a {
 .info-icon {
   font-size: 50px;
   cursor: pointer;
-  margin-left: 50px;
+  margin-left: 20px;
   transition: 0.5s;
 }
 
-.info-icon:hover i {
-  color: rgba(170, 170, 170, 0.39);
+.info-icon:hover {
+  transform: scale(1.3);
   transition: 0.5s;
 }
 
 .volume-icon {
   font-size: 50px;
   cursor: pointer;
-  margin-right: 50px;
+  margin-right: 40px;
+  margin-bottom: 10px;
   transition: 0.5s;
 }
 
 .volume-icon:hover {
-  color: rgba(170, 170, 170, 0.39);
+  transform: scale(1.3);
   transition: 0.5s;
 }
 
@@ -495,46 +497,6 @@ ul {
   text-decoration: underline;
   margin: 5px 0px 10px 0px;
   color: #c5c5c5;
-}
-
-/*========*/
-
-/* Custom Alert */
-
-.custom-alert {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  color: #333;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  text-align: center;
-  display: none; /* Hidden by default */
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
-
-.custom-alert p {
-  margin-bottom: 15px;
-  font-size: 20px;
-}
-
-.custom-alert button {
-  padding: 10px 20px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 17px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.custom-alert button:hover {
-  background-color: #272727;
 }
 
 /*========*/
