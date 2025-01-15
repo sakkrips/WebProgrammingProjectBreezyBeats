@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.log("No mood selected.");
   }
+  fetchWeather(); // Ensure weather data is fetched on page load
 });
 
 async function fetchWeather() {
@@ -30,10 +31,10 @@ async function fetchWeather() {
             weatherCondition;
           document.getElementById("temperature").textContent = data.main.temp;
           document.getElementById("location").textContent = data.name;
-          //*******************dWE NEED TO AKE THIS LINK TO THE MOOD PAGE
-          const mood = "calm";
+
+          const mood = sessionStorage.getItem("selectedMood") || "calm";
           setMood(mood);
-          console.log(weatherCondition + data.main.temp + data.name);
+          console.log(`Weather: ${weatherCondition}, Mood: ${mood}`);
           setBackgroundVideo(weatherCondition);
         } catch (error) {
           console.error("Error fetching weather data:", error);
@@ -48,12 +49,17 @@ async function fetchWeather() {
   }
 }
 
-// async function to set mood with album art
+// Function to update the selected mood
+function updateMood(selectedMood) {
+  sessionStorage.setItem("selectedMood", selectedMood);
+  setMood(selectedMood);
+}
+
+// Async function to set mood with album art
 async function setMood(mood) {
   const token = await getSpotifyToken();
   const weatherCondition =
     document.getElementById("weather-condition").textContent;
-  Mood = mood;
   let playlistId = null;
   if (mood && weatherCondition) {
     playlistId = getPlaylistId(mood, weatherCondition);
@@ -66,8 +72,6 @@ async function setMood(mood) {
       document.getElementById("music-recommendation").textContent =
         "No playlist available for this combination.";
     }
-    //   } else {
-    //     console.log("Weather or mood data is missing.");
   }
 }
 
@@ -92,7 +96,7 @@ function getPlaylistId(mood, weatherCondition) {
       Clouds: "6gqbl1e15W0JfxtyWPJnVu",
       Snow: "2RCAeT4ovN3O1yDeAWZl1b",
     },
-    melancholic: {
+    melancholy: {
       Clear: "4ZbcfdnWOjn8FQk4mvsyb0",
       Rain: "1aLrekwC72iuF5d5nePJkv",
       Clouds: "2GXv4UaSiTAQPi6ohv3JaJ",
@@ -158,6 +162,8 @@ async function getSpotifyToken() {
     console.error("Error getting Spotify token:", error);
   }
 }
+
+// Function to update the background video
 function setBackgroundVideo(weatherCondition) {
   const videoElement = document.getElementById("background-clip");
 
@@ -170,15 +176,9 @@ function setBackgroundVideo(weatherCondition) {
     Snow: "https://videos.pexels.com/video-files/14034808/14034808-hd_1080_1920_24fps.mp4",
   }[weatherCondition];
 
-  // Check if the src is different to avoid unnecessary reloads
   if (videoElement.src !== videoSrc) {
     videoElement.src = videoSrc;
-
-    // Reload the video to apply the new source
     videoElement.load();
   }
-
-  // Log the vid  eo source for debugging
   console.log(`Video updated to: ${videoSrc}`);
 }
-fetchWeather();
