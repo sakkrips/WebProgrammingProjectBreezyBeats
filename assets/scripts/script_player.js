@@ -96,7 +96,7 @@ function getPlaylistId(mood, weatherCondition) {
       Clouds: "6gqbl1e15W0JfxtyWPJnVu",
       Snow: "2RCAeT4ovN3O1yDeAWZl1b",
     },
-    melancholic: {
+    melancholy: {
       Clear: "4ZbcfdnWOjn8FQk4mvsyb0",
       Rain: "1aLrekwC72iuF5d5nePJkv",
       Clouds: "2GXv4UaSiTAQPi6ohv3JaJ",
