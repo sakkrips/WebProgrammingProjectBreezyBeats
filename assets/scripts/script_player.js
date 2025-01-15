@@ -182,3 +182,29 @@ function setBackgroundVideo(weatherCondition) {
   }
   console.log(`Video updated to: ${videoSrc}`);
 }
+
+
+
+// Popup
+const profileButton = document.querySelector('.user-status a:nth-child(2)');
+const popup = document.getElementById('profile-popup');
+const closePopupButton = document.getElementById('close-popup');
+
+// show the popup
+profileButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent any default link behavior
+  popup.classList.remove('hidden'); // Remove the 'hidden' class to show the popup
+});
+
+// close the popup
+closePopupButton.addEventListener('click', () => {
+  popup.classList.add('hidden'); // Add the 'hidden' class to hide the popup
+});
+
+//  Close the popup when clicking outside of it
+window.addEventListener('click', (event) => {
+  if (event.target === popup) {
+    popup.classList.add('hidden');
+  }
+});
+
