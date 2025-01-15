@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+<<<<<<< Updated upstream
 /* Preloader styles */
 #preloader {
   position: fixed;
@@ -32,6 +33,8 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+=======
+>>>>>>> Stashed changes
 
 body {
   font-family: "Work Sans", sans-serif;
@@ -42,14 +45,28 @@ body {
   width: 125px;
   height: 125px;
   object-fit: cover;
+<<<<<<< Updated upstream
+=======
+}
+
+.search-bar {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 50%;
+  margin:auto;
+  margin-left: 20%;
+  background-color: #0d1b2a;
+  color: white;
+  border: none;
+>>>>>>> Stashed changes
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border-bottom: 2px rgba(255, 255, 255, 0.63) solid;
-  background-color: #070b11; */
 }
 
 .user-status {
@@ -60,17 +77,20 @@ nav {
   margin-right: 25px;
 }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
-input {
-  width: 28%;
-  padding: 20px 30px;
+form input {
+  width: 50%;
+  padding: 10px;
   border-radius: 100px;
   background-color: #0d1b2a;
   color: white;
   border: none;
-  margin-left: 20px;
-  font-size: 20px;
+  margin: 0 auto;
+  font-size: 15px;
   font-family: inherit;
 }
 
@@ -102,10 +122,10 @@ input::placeholder {
   height: 60%;
   border-radius: 30px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
   align-items: center;
   justify-content: space-between;
-  /* background-color: #cccaca; */
 
   padding: 50px;
 }
@@ -116,33 +136,29 @@ input::placeholder {
   text-align: center;
 }
 
-.song {
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 10px;
+#album-cover {
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
-.artist {
-  font-size: 30px;
-  align-self: center;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.album-cover {
-  height: 260px;
-  width: 260px;
-  margin-bottom: 60px;
-}
-
-.album-cover img {
-  height: 100%;
-  width: 100%;
-  border-radius: 40px;
+#album-cover img {
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  border-radius: 50%;
   transition: all 0.3s ease-in-out;
-  box-shadow: rgba(126, 211, 33, 0.3) 3px 3px, rgba(126, 211, 33, 0.25) 6px 6px,
-    rgba(126, 211, 33, 0.2) 9px 9px, rgba(126, 211, 33, 0.1) 12px 12px;
+    animation-name: rotate;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
+
+
+@keyframes rotate{
+  from{ transform: rotate(-360deg); }
+  to{ transform: rotate(360deg); }
+}
+
 
 .album-cover img:hover {
   box-shadow: rgba(126, 211, 33, 0.4) 5px 5px, rgba(126, 211, 33, 0.3) 10px 10px,
@@ -150,126 +166,6 @@ input::placeholder {
     rgba(126, 211, 33, 0.05) 25px 25px;
 }
 
-/* .player {
-  height: 120px;
-  width: 1000px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-/* 
-.control-buttons {
-  position: relative;
-  display: flex;
-  height: 50%;
-  width: 74%;
-  align-items: center;
-  justify-content: center;
-  gap: 35px;
-}
-
-.control-buttons button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.sub-btns {
-  font-size: 30px;
-  cursor: pointer;
-  color: #d6dee0;
-}
-
-.play-pause {
-  font-size: 50px;
-  color: white;
-}
-
-.sub-btns:hover {
-  transform: scale(1.05);
-  color: white;
-}
-
-.play-pause:hover {
-  transform: scale(1.05);
-}
-
-.play-pause:active {
-  color: #1DB954; 
-  transform: scale(0.95); /
-}
-.sub-btns:active {
-  color: #1DB954;
-  transform: scale(0.95); /
-}
-
-.progress {
-  height: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-} */
-/* 
-.progress-bar {
-  width: 65%;
-  padding: 0;
-  margin: 0; */
-/* }
-
-.timer {
-  color: white;
-} */
-
-/* 
-.volume-container {
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  align-items: center;
-  justify-content: start;
-  margin-top: 5px;
-  
-} */
-
-/* .volume {
-  color: #d6dee0;
-  font-size: 20px;
-}
-
-.volume-bar {
-  visibility: hidden; 
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translate(0, -50%);
-  width: 100px;
-  margin-left: 10px;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-} */
-
-
-/* .volume-container:hover .volume-bar {
-  visibility: visible; 
-  opacity: 1;          
-}
-.volume:hover {
-  transform: scale(1.05);
-  color: white;
-}
-
-
-.volume-bar {
-  padding: 0;
-  margin: 0;
-  margin-left: 5px;
-}
-
-.volume-bar::-webkit-slider-thumb {
-  cursor: pointer;
-} */
 .background-clip{
   position: absolute;
   top: 0;
@@ -278,4 +174,109 @@ input::placeholder {
   height: 100%;
   object-fit: cover;
   z-index: -1;
+}
+
+
+/* Popup Styles */
+
+/* Button */
+#profile-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Popup Styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.84);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: #ffffff;
+  width: 40%;
+  height: 65%;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(114, 114, 114, 0.774);
+  text-align: center;
+  box-shadow: rgba(3, 3, 3, 0.4) 5px 5px, rgba(90, 90, 90, 0.479) 10px 10px, rgba(230, 230, 230, 0.2) 15px 15px, rgba(241, 241, 241, 0.705) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 40px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 25px;
+  text-align: center;
+  margin-left: 5px;
+}
+
+
+
+
+.image-circle {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  overflow: hidden; /* Ensures the image stays within the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Ensure the image fits the circle */
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintains aspect ratio and fills the circle */
+}
+
+
+.submit-btn {
+  width: 30%;
+  padding: 10px;
+  margin: 20px auto;
+  background-color: #363636; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #000000; /* Darker blue on hover */
 }
