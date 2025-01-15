@@ -39,15 +39,11 @@ async function fetchWeather() {
         } catch (error) {
           console.error("Error fetching weather data:", error);
         }
-      },
-      (error) => {
-        console.error("Error getting location: ", error);
-      }
-    );
-  } else {
-    console.log("Geolocation is not supported by this browser.");
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
   }
-}
 
 // Function to update the selected mood
 function updateMood(selectedMood) {
@@ -64,13 +60,19 @@ async function setMood(mood) {
   if (mood && weatherCondition) {
     playlistId = getPlaylistId(mood, weatherCondition);
 
-    if (playlistId) {
-      const coverArt = await fetchPlaylistCoverArt(playlistId, token);
-      displayCoverArt(coverArt);
-      displaySpotifyPlayer(playlistId);
+    let playlistId = null;
+    if (mood && weatherCondition) {
+        playlistId = getPlaylistId(mood, weatherCondition);
+        
+        if (playlistId) {
+            const coverArt = await fetchPlaylistCoverArt(playlistId, token);
+            displayCoverArt(coverArt);
+            displaySpotifyPlayer(playlistId);
+        } else {
+            document.getElementById('music-recommendation').textContent = "No playlist available for this combination.";
+        }
     } else {
-      document.getElementById("music-recommendation").textContent =
-        "No playlist available for this combination.";
+        console.log("Weather or mood data is missing.");
     }
   }
 }
@@ -104,63 +106,58 @@ function getPlaylistId(mood, weatherCondition) {
     },
   };
 
-  return playlistMapping[mood]?.[weatherCondition] || null;
+    return playlistMapping[mood]?.[weatherCondition] || null;
 }
 
 // Function to fetch album cover art for the first track in the playlist
 async function fetchPlaylistCoverArt(playlistId, token) {
-  try {
-    const response = await fetch(
-      `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    const data = await response.json();
-    return data.items[0]?.track?.album?.images[0]?.url; // URL of the first track's album art
-  } catch (error) {
-    console.error("Error fetching playlist cover art:", error);
-  }
+    try {
+        const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const data = await response.json();
+        return data.items[0]?.track?.album?.images[0]?.url; // URL of the first track's album art
+    } catch (error) {
+        console.error('Error fetching playlist cover art:', error);
+    }
 }
 
 // Function to display album cover art in HTML
 function displayCoverArt(coverArtUrl) {
-  if (coverArtUrl) {
-    document.getElementById(
-      "album-cover"
-    ).innerHTML = `<img src="${coverArtUrl}" alt="Album Cover" style="width: 300px; height: 300px;">`;
-  } else {
-    document.getElementById("album-cover").textContent =
-      "No album cover available.";
-  }
+    if (coverArtUrl) {
+        document.getElementById('album-cover').innerHTML = `<img src="${coverArtUrl}" alt="Album Cover"">`;
+    } else {
+        document.getElementById('album-cover').textContent = "No album cover available.";
+    }
 }
 
 // Function to display the Spotify player for the playlist
 function displaySpotifyPlayer(playlistId) {
-  document.getElementById("music-recommendation").innerHTML = `
+    document.getElementById('music-recommendation').innerHTML = `
         <iframe src="https://open.spotify.com/embed/playlist/${playlistId}?view=0" 
                 width="1000" height="80" frameborder="0" allowtransparency="false" allow="encrypted-media"></iframe>
     `;
 }
 
+
 // Async function to get Spotify token
 async function getSpotifyToken() {
-  try {
-    const response = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: "Basic " + btoa(clientId + ":" + clientSecret),
-      },
-      body: "grant_type=client_credentials",
-    });
-    const data = await response.json();
-    return data.access_token;
-  } catch (error) {
-    console.error("Error getting Spotify token:", error);
-  }
+    try {
+        const response = await fetch('https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+            },
+            body: 'grant_type=client_credentials'
+        });
+        const data = await response.json();
+        return data.access_token;
+    } catch (error) {
+        console.error('Error getting Spotify token:', error);
+    }
 }
 
 // Function to update the background video
