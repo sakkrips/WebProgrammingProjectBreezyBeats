@@ -266,6 +266,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  function setupVolumeToggle(volumeIconId, audioElementId) {
+    const volumeIcon = document.getElementById(volumeIconId);
+    const audioElement = document.getElementById(audioElementId);
+
+    console.log('Volume Icon:', volumeIcon);
+    console.log('Audio Element:', audioElement);
+
+    if (!volumeIcon || !audioElement) {
+      console.error('Required elements are missing.');
+      return;
+    }
+
+    let isMuted = false;
+
+    volumeIcon.addEventListener('click', () => {
+      isMuted = !isMuted;
+      audioElement.muted = isMuted;
+
+      if (isMuted) {
+        volumeIcon.classList.remove('fa-volume-high');
+        volumeIcon.classList.add('fa-volume-xmark');
+      } else {
+        volumeIcon.classList.remove('fa-volume-xmark');
+        volumeIcon.classList.add('fa-volume-high');
+      }
+    });
+  }
+
+  setupVolumeToggle('volume-icon', 'audio-element');
+});
+
 
 /*========*/
 
