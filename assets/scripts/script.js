@@ -299,8 +299,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/*========*/
+document.getElementById('sign-up-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
+  // Get input values
+  const username = document.getElementById('username-up').value;
+  const email = document.getElementById('email-up').value;
+  const password = document.getElementById('password-up').value;
 
+  try {
+    // Send POST request to backend
+    const response = await fetch('http://localhost:3000/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password }),
+    });
 
-
+    if (response.ok) {
+      const data = await response.json();
+      alert('User registered successfully!');
+      console.log('Registered user:', data);
+    } else {
+      const error = await response.text();
+      alert(`Registration failed: ${error}`);
+    }
+  } catch (err) {
+    console.error('Error during registration:', err);
+  }
+});
