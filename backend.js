@@ -75,6 +75,35 @@ async function registerUser(username, email, password) {
       res.status(500).send(err.message || 'Server Error'); // Return the error message
     }
   });
+
+ // Login Endpoint
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+  
+    if (!username || !password) {
+      return res.status(400).send('Username and password are required.');
+    }
+  
+    try {
+      // Query to check user credentials
+      const result = await pool.query(
+        'SELECT * FROM users WHERE username = $1 AND password = $2',
+        [username, password]
+      );
+  
+      if (result.rows.length > 0) {
+        // Credentials are valid
+        res.status(200).json({ message: 'Login successful!' });
+      } else {
+        // Credentials are invalid
+        res.status(401).send('Invalid username or password.');
+      }
+    } catch (err) {
+      console.error('Error during login:', err);
+      res.status(500).send('Server error. Please try again later.');
+    }
+  })
+
   
   async function testDatabaseConnection() {
     try {

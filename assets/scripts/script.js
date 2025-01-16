@@ -250,11 +250,11 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault(); // Prevent the default form submission
 
     // Get user input
-    const email = document.getElementById("email-in").value.trim();
-    const password = document.getElementById("password-in").value;
+    const username = document.getElementById("login-name").value.trim();
+    const password = document.getElementById("login-password").value;
 
     // Validate the credentials
-    if (email === testLogin.email && password === testLogin.password) {
+    if (username === testLogin.email && password === testLogin.password) {
       // Show a success alert
       showCustomAlert("Login successful!", () => {
         // Redirect to another page after closing the alert
@@ -327,3 +327,49 @@ document.getElementById('sign-up-form').addEventListener('submit', async (e) => 
     console.error('Error during registration:', err);
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('login-form');
+
+  if (!loginForm) {
+    console.error('Login form not found in the DOM!');
+    return;
+  }
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Collect user input
+    const username = document.getElementById('login-name').value.trim();
+    const password = document.getElementById('login-password').value.trim();
+
+    // Validate input
+    if (!username || !password) {
+      alert('Both fields are required!');
+      return;
+    }
+
+    try {
+      // Send POST request to the backend
+      const response = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        // Successful login
+        alert('Login successful!');
+        window.location.href = 'mood.html'; // Redirect to the dashboard or home page
+      } else {
+        // Login failed
+        const error = await response.text();
+        alert(`Login failed: ${error}`);
+      }
+    } catch (err) {
+      console.error('Error during login:', err);
+      alert('An error occurred while logging in. Please try again later.');
+    }
+  });
+});
+
