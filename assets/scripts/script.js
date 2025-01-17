@@ -223,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const alertMessage = document.getElementById("alertMessage");
     const closeAlertButton = document.getElementById("closeAlert");
 
-
     // Set the alert message
     alertMessage.textContent = message;
 
@@ -266,110 +265,145 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   function setupVolumeToggle(volumeIconId, audioElementId) {
     const volumeIcon = document.getElementById(volumeIconId);
     const audioElement = document.getElementById(audioElementId);
 
-    console.log('Volume Icon:', volumeIcon);
-    console.log('Audio Element:', audioElement);
+    console.log("Volume Icon:", volumeIcon);
+    console.log("Audio Element:", audioElement);
 
     if (!volumeIcon || !audioElement) {
-      console.error('Required elements are missing.');
+      console.error("Required elements are missing.");
       return;
     }
 
     let isMuted = false;
 
-    volumeIcon.addEventListener('click', () => {
+    volumeIcon.addEventListener("click", () => {
       isMuted = !isMuted;
       audioElement.muted = isMuted;
 
       if (isMuted) {
-        volumeIcon.classList.remove('fa-volume-high');
-        volumeIcon.classList.add('fa-volume-xmark');
+        volumeIcon.classList.remove("fa-volume-high");
+        volumeIcon.classList.add("fa-volume-xmark");
       } else {
-        volumeIcon.classList.remove('fa-volume-xmark');
-        volumeIcon.classList.add('fa-volume-high');
+        volumeIcon.classList.remove("fa-volume-xmark");
+        volumeIcon.classList.add("fa-volume-high");
       }
     });
   }
 
-  setupVolumeToggle('volume-icon', 'audio-element');
+  setupVolumeToggle("volume-icon", "audio-element");
 });
 
+document
+  .getElementById("sign-up-form")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-document.getElementById('sign-up-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
+    // Get input values
+    const username = document.getElementById("username-up").value;
+    const email = document.getElementById("email-up").value;
+    const password = document.getElementById("password-up").value;
 
-  // Get input values
-  const username = document.getElementById('username-up').value;
-  const email = document.getElementById('email-up').value;
-  const password = document.getElementById('password-up').value;
+    try {
+      // Send POST request to backend
+      const response = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      });
 
-  try {
-    // Send POST request to backend
-    const response = await fetch('http://localhost:3000/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email, password }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      alert('User registered successfully!');
-      console.log('Registered user:', data);
-    } else {
-      const error = await response.text();
-      alert(`Registration failed: ${error}`);
+      if (response.ok) {
+        const data = await response.json();
+        alert("User registered successfully!");
+        console.log("Registered user:", data);
+      } else {
+        const error = await response.text();
+        alert(`Registration failed: ${error}`);
+      }
+    } catch (err) {
+      console.error("Error during registration:", err);
     }
-  } catch (err) {
-    console.error('Error during registration:', err);
-  }
-});
+  });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.getElementById('login-form');
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById("login-form");
 
   if (!loginForm) {
-    console.error('Login form not found in the DOM!');
+    console.error("Login form not found in the DOM!");
     return;
   }
 
-  loginForm.addEventListener('submit', async (e) => {
+  loginForm.addEventListener("submit", async (e) => {
     e.preventDefault(); // Prevent the default form submission
 
     // Collect user input
-    const username = document.getElementById('login-name').value.trim();
-    const password = document.getElementById('login-password').value.trim();
+    const username = document.getElementById("login-name").value.trim();
+    const password = document.getElementById("login-password").value.trim();
 
     // Validate input
     if (!username || !password) {
-      alert('Both fields are required!');
+      alert("Both fields are required!");
       return;
     }
 
     try {
       // Send POST request to the backend
-      const response = await fetch('http://localhost:3000/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
 
       if (response.ok) {
         // Successful login
-        alert('Login successful!');
-        window.location.href = 'mood.html'; // Redirect to the dashboard or home page
+        alert("Login successful!");
+        window.location.href = "mood.html"; // Redirect to the dashboard or home page
       } else {
         // Login failed
         const error = await response.text();
         alert(`Login failed: ${error}`);
       }
     } catch (err) {
-      console.error('Error during login:', err);
-      alert('An error occurred while logging in. Please try again later.');
+      console.error("Error during login:", err);
+      alert("An error occurred while logging in. Please try again later.");
     }
   });
 });
 
+// Cookies
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!getCookie("cookiesAccepted")) {
+    document.getElementById("cookieConsent").style.display = "block";
+  }
+
+  document.getElementById("acceptCookies").addEventListener("click", () => {
+    setCookie("cookiesAccepted", "true", 365); // Save consent for 1 year
+    document.getElementById("cookieConsent").style.display = "none";
+  });
+});
+
+// Utility functions for cookies
+function setCookie(name, value, days) {
+  const date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+  const expires = `expires=${date.toUTCString()}`;
+  document.cookie = `${name}=${value};${expires};path=/`;
+}
+
+function getCookie(name) {
+  const nameEQ = `${name}=`;
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    let c = cookies[i].trim();
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+  }
+  return null;
+}
+
+function deleteCookie(name) {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
