@@ -501,6 +501,8 @@ ul {
 
 /*========*/
 
+/* Alerts */
+
 .custom-alert {
   position: fixed;
   top: 50%;
@@ -536,6 +538,10 @@ ul {
   background-color: #474747;
 }
 
+/*========*/
+
+/* Cookies */
+
 #cookieConsent {
   display: none;
   background: #0000006e;
@@ -552,6 +558,10 @@ ul {
   align-items: center;
   margin: 0 auto;
   font-size: 35px;
+}
+
+#cookieConsent span {
+  margin: auto;
 }
 
 button {
@@ -584,3 +594,16 @@ button {
   background-color: #5c5c5c96;
   color: white;
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 20%;
+}
+
+.buttons-container #declineCookies:hover {
+  background-color: #703c3c96;
+  color: white;
+}
+/*========*/

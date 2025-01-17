@@ -304,13 +304,22 @@ document.addEventListener("DOMContentLoaded", () => {
 // Cookies
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (!getCookie("cookiesAccepted")) {
+  // Check if user has already made a choice
+  if (!getCookie("cookiesAccepted") && !getCookie("cookiesDeclined")) {
     document.getElementById("cookieConsent").style.display = "block";
   }
 
+  // Handle Accept Button
   document.getElementById("acceptCookies").addEventListener("click", () => {
     setCookie("cookiesAccepted", "true", 365); // Save consent for 1 year
     document.getElementById("cookieConsent").style.display = "none";
+  });
+
+  // Handle Decline Button
+  document.getElementById("declineCookies").addEventListener("click", () => {
+    setCookie("cookiesDeclined", "true", 365); // Save decline choice for 1 year
+    document.getElementById("cookieConsent").style.display = "none";
+    alert("You have declined cookies. Certain features may be disabled.");
   });
 });
 
