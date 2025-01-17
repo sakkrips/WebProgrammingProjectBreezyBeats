@@ -16,12 +16,6 @@ async function fetchWeather() {
           const data = await response.json();
 
           const weatherCondition = data.weather[0].main;
-          // document.getElementById('weather-condition').textContent = weatherCondition;
-          // document.getElementById('temperature').textContent = data.main.temp;
-          // document.getElementById('location').textContent = data.name;
-
-          // const mood = getMoodBasedOnWeather(weatherCondition);
-          // setMood(mood);
           console.log(weatherCondition + data.main.temp + data.name);
           setBackgroundVideo(weatherCondition);
         } catch (error) {
@@ -36,72 +30,6 @@ async function fetchWeather() {
     console.log("Geolocation is not supported by this browser.");
   }
 }
-
-// async function setMood(mood) {
-//     const token = await getSpotifyToken();
-//     const weatherCondition = document.getElementById('weather-condition').textContent;
-
-//     let playlistId = null;
-//     if (mood && weatherCondition) {
-//         if (mood === 'calm') {
-//             playlistId = {
-//                 Clear: '69pkbBraIGFlJOi21CEN80',
-//                 Rain: '69pkbBraIGFlJOi21CEN80',
-//                 Clouds: '4uKswQrI9K0wjO9zKj5Zmx',
-//                 Snow: '0QhHK9Z1rwfA8mQB9atFgG'
-//             }[weatherCondition];
-//         } else if (mood === 'happy') {
-//             playlistId = {
-//                 Clear: '337i9dQZF1DWW5Jdaphc81Z',
-//                 Rain: '5Oks9gIOQ6XKg9QOhMZgj2',
-//                 Clouds: '2BpLcpGa1Qc4jBd4Mjw0db',
-//                 Snow: '3wVdPrZNaqcDIdCPXavJgS'
-//             }[weatherCondition];
-//         } else if (mood === 'energetic') {
-//             playlistId = {
-//                 Clear: '0jbaEzUwLTOlIOp42B5pXV',
-//                 Rain: '37i9dQZF1DX2pSTOxoPbx9',
-//                 Clouds: '6gqbl1e15W0JfxtyWPJnVu',
-//                 Snow: '37i9dQZF1DX0LctmTPNQ3v'
-//             }[weatherCondition];
-//         } else if (mood === 'melancholic') {
-//             playlistId = {
-//                 Clear: '0qKWsDcph1R6DBhBrTocQO',
-//                 Rain: '6SdhABFA2ngvblTHHf7vV0',
-//                 Clouds: '1eM5AviheXztswq4jn2Rc0',
-//                 Snow: '37i9dQZF1DX88mTcSM3nFc'
-//             }[weatherCondition];
-//         }
-
-//         if (playlistId) {
-//             document.getElementById('music-recommendation').innerHTML = `
-//                 <iframe src="https://open.spotify.com/embed/playlist/${playlistId}"
-//                         width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-//             `;
-//         } else {
-//             document.getElementById('music-recommendation').textContent = "No playlist available for this combination.";
-//         }
-//     } else {
-//         console.log("Weather or mood data is missing.");
-//     }
-// }
-
-// async function getSpotifyToken() {
-//     try {
-//         const response = await fetch('https://accounts.spotify.com/api/token', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/x-www-form-urlencoded',
-//                 'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-//             },
-//             body: 'grant_type=client_credentials'
-//         });
-//         const data = await response.json();
-//         return data.access_token;
-//     } catch (error) {
-//         console.error('Error getting Spotify token:', error);
-//     }
-// }
 
 function setBackgroundVideo(weatherCondition) {
   const videoElement = document.getElementById("background-clip");
@@ -407,3 +335,8 @@ function getCookie(name) {
 function deleteCookie(name) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
+
+// Aggelos: Front End + Cookies js + PopUp js
+// Grigoris: Mood js file + A part of the script js
+// Loukas: Database + Player
+// Sifis: A part of the script js

@@ -543,12 +543,14 @@ ul {
   padding: 10px;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  left: 200px;
+  width: 80%;
   height: 120px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
   font-size: 35px;
 }
 
